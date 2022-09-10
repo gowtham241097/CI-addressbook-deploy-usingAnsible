@@ -40,7 +40,7 @@ pipeline {
         
         
         
-        stage('Ansible Deploy') {
+        stage('Ansible Deploy dev') {
              
             steps {
                  
@@ -52,5 +52,22 @@ pipeline {
             
             }
         }
+        
+        
+         stage('Ansible Deploy prod') {
+             
+             steps {
+                 
+             
+               
+               sh "ansible-playbook main.yml -i inventories/prod/hosts --user ubuntu --key-file ~/.ssh/id_rsa"
+
+             
+    }
+   
+}
+        
+        
+        
     }
 }
